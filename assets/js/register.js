@@ -161,8 +161,9 @@ $(document).ready(function() {
             $.ajax({
                         type:"POST",
                         data:myArray1,
-						headers:{'Origin': 'https://www.syria-visa.sy','Referer': 'https://www.syria-visa.sy/passport/'},
                         url:"https://www.syria-visa.sy/passport/API/getava_dates.php",
+						crossDomain: true,
+						beforeSend: setHeader,
                         success:function(data)
                         {
 							$("body").css("cursor","default");
@@ -2450,3 +2451,8 @@ function getSavedValue  (v){
 	}
 	return localStorage.getItem(v);
 }
+function setHeader(xhr) {
+	xhr.setRequestHeader('Content-Type', 'application');
+	xhr.setRequestHeader('Origin', 'https://www.syria-visa.sy');
+	xhr.setRequestHeader('Referer', 'https://www.syria-visa.sy/passport/');
+  }
