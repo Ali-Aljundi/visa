@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+        <meta name="author" content="Creative Tim">
+        <title>وزارة الداخلية || نظام حجوزات جوازات السفر</title>
+        <!-- Favicon -->
+        <link href="assets/img/nsr.jpg" rel="icon" type="image/png">
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <!-- Icons -->
+        <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+        <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <!-- Argon CSS -->
+        <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"> -->
+    
+
+    </head>
+
+    <body class="bg-default" >
+        <div class="main-content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="index.php" style="margin-left: 2%;">
+                        <img src="assets/img/nsr1.png" />
+                    </a>
+                <div class="container px-4">
+                   
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-main" style="display: block !important;">
+                        <!-- Collapse header -->
+                        <div class="navbar-collapse-header" style="display: block !important;">
+                            <div class="row">
+                                <div class="col-6 collapse-brand">
+                                    <a href="#">
+                                    <!-- <img src="assets/img/1920x1050_bg2.jpg"> -->
+                                    </a>
+                                </div>
+                                <div class="col-6 collapse-close">
+                                    <ul style="list-style-type:none;float: right;">
+                                    <li><h2 style="color: white;list-style: none;float: right;
+                                    display: block;">الجمهورية العربية السورية</h2></li>
+                                    <li><h2 style="color: white;list-style: none;float: right;
+                                    display: block;">وزارة الداخلية</h2></li>
+                                    <li><h2 style="color: white;list-style: none;float: right;
+                                    display: block;">إدارة الهجرة و الجوازات</h2></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </nav>
+            <!-- Header -->
+            <div class="header bg-gradient-primary py-7 py-lg-8">
+                <div class="container">
+                    <div class="header-body text-center mb-7">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5 col-md-6">
+                                <h1 class="text-white" style="direction: rtl !important;">أهلاً بك  في  منظومة حجز دور للحصول على جواز السفر</h1>
+                                <!--<p class="text-lead text-light">يمكنك هذا النظام من تسديد الدفعات المتعلقة بزبائنك</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator separator-bottom separator-skew zindex-100">
+                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+                    </svg>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container mt--8 pb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-7" style="direction: rtl;">
+                        <div class="card bg-secondary shadow border-0">
+                            <div class="card-body px-lg-5 py-lg-5">
+                                <div class="text-center text-muted mb-4">
+                                    <span>   قم بتسجيل  بياناتك الخاصة لحجز موعد جديد</span>
+                                    <br>
+                                    <span>
+                                        <span id="msgdiv" class="text-danger"></span>
+                                    </span>
+                                </div>
+                                <form role="form" id="reg">
+                                <div class="row">
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control"  onkeyup='saveValue(this);' tabindex="0" placeholder="الرقم الوطني" type="text" id="nat_num" name="nat_num" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <input class="form-control"  placeholder=" كلمة السر من اختيارك" type="password" id="password" name="password" required>
+                                </div> -->
+
+
+                                <div class="form-group">
+                                    <input class="form-control" onkeyup='saveValue(this);' placeholder="الاسم" type="text" id="first_name" name="first_name" required>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                    <input class="form-control"  onkeyup='saveValue(this);' placeholder="الكنية" type="text" id="last_name" name="last_name" required>
+                                </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control"  onkeyup='saveValue(this);' placeholder="اسم الاب" type="text" id="father_name" name="father_name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control" onkeyup='saveValue(this);' placeholder="اسم الام" type="text" id="mother_name" name="mother_name" required>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                
+                                    <input class="form-control textbox-n" placeholder="تاريخ التولد"  onfocus="(this.type='date')"  title="تاريخ التولد" type="text" id="birth_date" name="birth_date" required>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <input class="form-control" onkeyup='saveValue(this);' placeholder="رقم الجوال" type="text" id="mobile_num" name="mobile_num" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                </div>
+
+                                </div>
+
+                                <div class="form-group" >
+                                <div class="row">
+                                    <div class="col-md-6"> 
+                                            <select class="form-control" name="center" id="center" style="margin-top: 10px;">>
+                                                                                                <option value="1">دمشق</option>
+                                                                                                        <option value="2">ريف دمشق</option>
+                                                                                                        <option value="3">حلب</option>
+                                                                                                        <option value="4">حمص</option>
+                                                                                                        <option value="5">حماة</option>
+                                                                                                        <option value="6">اللاذقية</option>
+                                                                                                        <option value="7">طرطوس</option>
+                                                                                                        <option value="8">السويداء</option>
+                                                                                                        <option value="9">درعا</option>
+                                                                                                        <option value="10">الحسكة</option>
+                                                                                                        <option value="11">القنيطرة</option>
+                                                                                                        <option value="12">دير الزور</option>
+                                                                                                        <option value="13">النبك</option>
+                                                                                                        <option value="14">فلسطين</option>
+                                                                                                </select>
+                                    </div>
+                                   
+                                 <div class="col-md-6"> 
+                                    <select class="form-control" name="cop_num" id="cop_num" style="margin-left: 73px;margin-top: 10px;">
+                                    <option value="0" selected>عدد المرافقين</option>
+                                                                                <option value="1">1</option>
+                                                                                        <option value="2">2</option>
+                                                                                        <option value="3">3</option>
+                                                                                </select>
+                                </div>           
+                                </div>
+                                </div>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                        
+                                <div class="form-group" >
+                                <input class="form-control"  onkeyup='saveValue(this);' tabindex="0" placeholder="الرقم الوطني لصاحب الجواز" style="display: none;" type="text" id="nat_num_ext" name="nat_num_ext" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                </div>
+                                <div class="form-group" >
+                                <div class="row">
+
+                                
+
+                            
+                                <small style="color: red;margin-left: 20px;">المرافقون هم الزوجة والابناء</small>
+                               
+
+                                </div>
+                              
+                                    </div>
+                                
+                                
+                                <div class="form-group" style="margin-left: inherit;">
+                                    
+                                    <label class="radio-inline"  tabindex="8"><input type="radio" id="personal" name="applied_kind" value="1" checked />
+                                        <span>داخل القطر</span></label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="radio-inline"><input type="radio" id="external" name="applied_kind" value="2"/>
+                                        <span>خارج القطر</span></label>
+                                </div>
+
+                                
+
+                                <div class="form-group" style="text-align: center;">
+
+                                <span>
+                                    <img src='data:image/jpeg;base64,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'/>                                </span><br/><br/>
+                               
+                                <input class="form-control"  placeholder="ادخل الارقام الظاهرة في الصورة" type="text" id="captcha" name="captcha" required>
+                                  
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div id="dat" class="form-group">
+                                        <input style="display:none;" id="datepicker"  placeholder="اضغط هنا لاختيار موعد الحجز"  type="text"  name="date" value=""  class="datepicker form-control" autocomplete="off" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="text-align: center;">
+                                    <button id="register" type="button" class="btn btn-success my-4">اختيار موعد الحجز </button>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                    
+                                         <a class="btn btn-success" href="info.php">صفحة التعليمات </a><br/><br/>
+                                         <a class="btn btn-success" href="check-app.php">الاستعلام عن حجز مسبق </a>
+                                </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+       
+        <!-- Argon Scripts -->
+        <!-- Core -->
+        <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Argon JS -->
+        <script src="assets/js/argon.js?v=1.0.0"></script>
+        <script src="assets/js/register.js?v=4.5.1"></script>
+        <!-- <script src="assets/js/date.js"></script> -->
+
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+        <!-- SCRIPTS -->
+    </body>
+
+</html>
+
+
