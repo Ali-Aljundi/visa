@@ -161,7 +161,7 @@ $(document).ready(function() {
             $.ajax({
                         type:"POST",
                         data:myArray1,
-                        url:"API/getava_dates.php",
+                        url:"https://www.syria-visa.sy/passport/API/getava_dates.php",
 						beforeSend: setHeader,
                         success:function(data)
                         {
