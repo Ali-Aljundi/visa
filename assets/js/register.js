@@ -2452,7 +2452,7 @@ function getSavedValue  (v){
 	return localStorage.getItem(v);
 }
 function setHeader(xhr) {
-	xhr.setRequestHeader('Content-Type', 'application');
+	xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://visa-three.vercel.app/');
 	xhr.setRequestHeader('Origin', 'https://www.syria-visa.sy');
 	xhr.setRequestHeader('Referer', 'https://www.syria-visa.sy/passport/');
   }
