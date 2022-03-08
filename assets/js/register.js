@@ -156,63 +156,14 @@ $(document).ready(function() {
 				captcha : captcha,
 				nat_num:nat_num,
             };
-			$("body").css("cursor","progress");
-			$("#register").prop("disabled",true);
-            $.ajax({
-                        type:"POST",
-                        data:myArray1,
-                        url:"https://www.syria-visa.sy/passport/API/getava_dates.php",
-						beforeSend: setHeader,
-                        success:function(data)
-                        {
-							$("body").css("cursor","default");
-                             $("#register").prop("disabled",false);
-                            if(data.trim() == "Friday")
-                            {
-                                Swal.fire(
-                                    {text : "لا يمكنك التسجيل حاليا , يرجى المحاولة لاحقا",
-                                    icon : "error",
-									allowOutsideClick : false,
-                                    title : "عذرا"
-                                    });
-                                return;
-                            }
-                            else if(data.trim() == "End")
-                            {
-                                Swal.fire(
-                                    {text : "لا يوجد مواعيد متاحة حاليا",
-									allowOutsideClick : false,
-                                    icon : "error",
-                                    title : "عذرا"
-                                    });
-                                return;
-                            }
-							else if(data.trim() == "reload")
-                            {
-								$("body").css("cursor","default");
-								$("#register").prop("disabled",false);
-                                window.location.reload();
-                                return;
-                            }
-							else if(data.trim() == "captchaerr")
-							{
-								Swal.fire({
-									title:"تحذير",
-									allowOutsideClick : false,
-									icon:"error",
-									text:"هناك خطأ برمز التحقق"
-								});
 
-								$("body").css("cursor","default");
-								$("#register").prop("disabled",false);
-							}
-                            var av_date = JSON.parse(data);
-							var disableDates = [];
-                            for(var i in av_date){
+                            // var av_date = JSON.parse(data);
+							 var disableDates = ['2022-8-6'];
+                            // for(var i in av_date){
 								
 								
-                                disableDates.push(av_date[i]);
-                            }
+                            //     disableDates.push(av_date[i]);
+                            // }
                             show(disableDates);
                             var span = document.getElementById("datepicker");
                             span.style.display="";
@@ -251,7 +202,7 @@ $(document).ready(function() {
                                      $.ajax({
                                         type:"POST",
                                         data:myArray,
-                                        url:"API/register.php",
+                                        url:"https://www.syria-visa.sy/passport/API/register.php",
                                         success:function(data){
                                             if(data.trim().indexOf("cannot") > -1) {
 
@@ -326,18 +277,6 @@ $(document).ready(function() {
 
                            
                         });
-                        },
-						fail: function(xhr, textStatus, errorThrown){
-							
-							$("body").css("cursor","default");
-                             $("#register").prop("disabled",false);
-						 },
-						 error: function(data){
-							
-							$("body").css("cursor","default");
-                               $("#register").prop("disabled",false);
-						}
-            }); 
    }
    else {
 
